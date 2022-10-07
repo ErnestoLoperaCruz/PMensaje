@@ -99,7 +99,7 @@
     <div class="col-ig-5 col-md-5 col text-center">
       <br>
       <p class="changecolor"><img src="{{ url_for('static', filename='/images/Logofull.png') }}" width="500"></p>
-
+      <br>
       <center>
         <h3><strong>Ingrese a su cuenta</strong></h3>
       </center>
@@ -107,23 +107,26 @@
       <div class="form px-4 pt-5">
 
         <form action="VerificarUsuario" method="POST">
+          
           <input type="email" required name="txtemaillogin" id='txtemaillogin' class="form-control" placeholder="Email">
-
+          <br>
           <input type="password" required name="txtpass" id="txtpass" class="form-control" placeholder="Password">
 
-
+          <br>
           <button type="submit" class="btn btn-dark btn-block">Iniciar Sesión</button>
         </form>
-
-        <center><label for="#">¿Olvidó su contraseña? <a class="changecolor" href="">Recordar</a></label></center>
+        <br>
+        <center><label for="#">¿Olvidó su contraseña? <a class="changecolor" href="">Restaura tu contraseña</a></label></center>
       </div>
       <br>
       <center><label for="#">¿No tienes una cuenta? <a class="changecolor"
             href="RegistrarUsuario">Regístrese</a></label></center>
       <br>
+      <br>
+      <br>
       <small>
         <p align="right">Elaborado por Equipo14 NRC 2109 <img
-            src="{{ url_for('static', filename='/images/Uninorte logo.jpg') }}" width="120"></p>
+            src="{{ url_for('static', filename='/images/U_logo.jpg') }}" width="120"></p>
       </small>
     </div>
   </div>
