@@ -8,6 +8,7 @@
   <title>Login MSN TEAM CORP</title>
   <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css' rel='stylesheet'>
   <link href='#' rel='stylesheet'>
+  <link rel="stylesheet" href="style.css"
   <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
   <style>
     body {
@@ -86,24 +87,37 @@
 
       margin-top: 20px;
     }
+
+    .grid {
+      display:grid;
+      grid-template-columns:50% 50%;
+      margin:20px;
+      flex-wrap:wrap;
+  }
+
+  .gridimage {
+    max-width: 100%;
+  }
   </style>
 </head>
 
 <body className='snippet-body'>
   <br>
-  <div class="row">
+  <div class="grid">
 
-    <div class="col-lg-6 col-md-6 col text-center">
-      <img src="{{ url_for('static', filename='/images/Wellcome.jpg') }}" width="800">
+    <div>
+      <img class="gridimage" src="{{ url_for('static', filename='/images/Wellcome.jpg') }}" width="800">
     </div>
 
-    <div class="col-ig-5 col-md-5 col text-center">
+    <div>
       <br>
-      <p class="changecolor"><img src="{{ url_for('static', filename='/images/Logofull.png') }}" width="500"></p>
+      <center><p class="changecolor"><img class="gridimage" src="{{ url_for('static', filename='/images/Logofull.png') }}" width="500"></p></center>
       <br>
       <center>
         <h3><strong>Ingrese a su cuenta</strong></h3>
       </center>
+      <br>
+      <br>
 
       <div class="form px-4 pt-5">
 
@@ -122,6 +136,7 @@
       <br>
       <center><label for="#">¿No tienes una cuenta? <a class="changecolor"
             href="RegistrarUsuario">Regístrese</a></label></center>
+      <br>
       <br>
       <br>
       <br>
