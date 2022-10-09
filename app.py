@@ -4,7 +4,6 @@ import controlDB
 from datetime import datetime
 import random
 import envioemail
-from passwrd import validar_password
 app = Flask(__name__)
 
 email_usuario=""
@@ -47,12 +46,8 @@ def RegistrarUsuario():
         nombre=request.form["txtnombregistro"]
         correo=request.form["txtemailregistro"]
         passw=request.form["txtpassregistro"]
-        nombre=nombre.replace("SELECT","").replace("INSERT","").replace("DELETE","").replace("UPDATE","").replace("WHERE","")
-        correo=correo.replace("SELECT","").replace("INSERT","").replace("DELETE","").replace("UPDATE","").replace("WHERE","")
-        passw=passw.replace("SELECT","").replace("INSERT","").replace("DELETE","").replace("UPDATE","").replace("WHERE","")
         passw2=passw.encode()
-        passw2=hashlib.sha384(passw2).hexdigest() #96 caracteres
-                        
+        passw2=hashlib.sha384(passw2).hexdigest() #96 caracteres                 
         codigo=datetime.now()
         codigo2=str(codigo)
         codigo2=codigo2.replace("-","")
@@ -60,34 +55,26 @@ def RegistrarUsuario():
         codigo2=codigo2.replace(" ","")
         codigo2=codigo2.replace(".","")
         
-        if validar_password(passw):
-            link = "http://localhost:5000/ActivarUsuario?codigo="+codigo2
-            mensajemail="Sr@ "+nombre+", usted se ha registrado en nuestra plataforma de mensajería empresarial; \n\n ingrese en el siguiente enlace para activar su cuenta :\n\n"+link+ "\n\nMuchas Gracias"
-            asunto="Equipo 14 te ha enviado codigo de activacion de la plataforma de mensajería"
-            # return render_template("Mensaje.html",data=mensajemail)
-            try:
-                respuesta=controlDB.regis_usuaro(nombre,correo, passw2,codigo2)
-            except Exception as e:
-                mensaje=f"Error al registrar usuario, verifique que el correo o el nombre de usuario no se encuentren registrados."
-                return render_template("Mensaje.html",data=mensaje)
-            try:
-                envioemail.enviar(correo,asunto,mensajemail)
-            except Exception as e:
-                mensaje=f"Error al enviar correo de activacion. {e}"
-                return render_template("Mensaje.html",data=mensaje)
-            mensaje="El usuarios "+nombre+" Registrado Satisfactoriamente"
-            return render_template("Mensaje.html",data="Revise su correo para activar su cuenta")
-        else:
-            mensaje="La contraseña debe tener al menos 8 caracteres, una mayuscula, una minuscula, un numero y un caracter especial"
+        link = "http://localhost:5000/ActivarUsuario?codigo="+codigo2
+        mensajemail="Sr@ "+nombre+", usted se ha registrado en nuestra plataforma de mensajería empresarial; \n\n ingrese en el siguiente enlace para activar su cuenta :\n\n"+link+ "\n\nMuchas Gracias"
+        asunto="Equipo 14 te ha enviado codigo de activacion de la plataforma de mensajería"
+        # return render_template("Mensaje.html",data=mensajemail)
+        try:
+            respuesta=controlDB.regis_usuaro(nombre,correo, passw2,codigo2)
+        except Exception as e:
+            mensaje=f"Error al registrar usuario, verifique que el correo o el nombre de usuario no se encuentren registrados."
             return render_template("Mensaje.html",data=mensaje)
-            
+        try:
+            envioemail.enviar(correo,asunto,mensajemail)
+        except Exception as e:
+            mensaje=f"Error al enviar correo de activacion. {e}"
+            return render_template("Mensaje.html",data=mensaje)
+        mensaje="El usuarios "+nombre+" Registrado Satisfactoriamente"
+        return render_template("Mensaje.html",data="Revise su correo para activar su cuenta")
+         
     if request.method=="GET":
         return render_template("registro.html")
 
-        #codigo3=random.randint(10000,1000000)
-        #codigo4=str(codigo3)+codigo2
-                
-        #controlDB.regis_usuaro(nombre,correo, passw2,codigo2)
     
 @app.route("/ActivarUsuario",methods=["GET","POST"])
 def ActivarUsuario():

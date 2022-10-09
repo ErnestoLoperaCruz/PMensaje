@@ -1,136 +1,180 @@
 <!doctype html>
-                        <html>
-                            <head>
-                                <meta charset='utf-8'>
-                                <meta name='viewport' content='width=device-width, initial-scale=1'>
-                                <title>Register</title>
-                                <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css' rel='stylesheet'>
-                                <link href='#' rel='stylesheet'>
-                                <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-                                <style>
-                              
-                                body{
+<html>
 
-  background-color: #fff;
-}
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>Register</title>
+  <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css' rel='stylesheet'>
+  <link href='#' rel='stylesheet'>
+  <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+  <style>
+    body {
 
-.btr{
+      background-color: #fff;
+    }
 
-  border-top-right-radius: 5px !important;
-}
+    .btr {
 
-
-.btl{
-
-  border-top-left-radius: 5px !important;
-}
-
-.btn-dark {
-    color: #fff;
-    background-color: #148F95;
-    border-color: #148F95;
-}
+      border-top-right-radius: 5px !important;
+    }
 
 
-.btn-dark:hover {
-    color: #fff;
-    background-color: #148F95;
-    border-color: #148F95;
-}
+    .btl {
 
-.changecolor {
-  color: #F85E34;
-}
+      border-top-left-radius: 5px !important;
+    }
+
+    .btn-dark {
+      color: #fff;
+      background-color: #148F95;
+      border-color: #148F95;
+    }
 
 
-.nav-pills{
+    .btn-dark:hover {
+      color: #fff;
+      background-color: #148F95;
+      border-color: #148F95;
+    }
 
-  display:table !important;
-  width:100%;
-}
+    .changecolor {
+      color: #F85E34;
+    }
 
-.nav-pills .nav-link {
-    border-radius: 0px;
-        border-bottom: 1px solid #F85E34;
 
-}
+    .nav-pills {
 
-.nav-item{
+      display: table !important;
+      width: 100%;
+    }
+
+    .nav-pills .nav-link {
+      border-radius: 0px;
+      border-bottom: 1px solid #F85E34;
+
+    }
+
+    .nav-item {
       display: table-cell;
-       background: #F85E34;
-}
+      background: #F85E34;
+    }
 
 
-.form{
+    .form {
 
-  padding: 10px;
+      padding: 10px;
       height: 300px;
-}
+    }
 
-.form input{
+    .form input {
 
-  margin-bottom: 12px;
-  border-radius: 3px;
-}
-
-
-.form input:focus{
-
-  box-shadow: none;
-  border-color: #148F95;
-}
+      margin-bottom: 12px;
+      border-radius: 3px;
+    }
 
 
-.form button{
+    .form input:focus {
 
-  margin-top: 20px;
-}</style>
-  </head>
+      box-shadow: none;
+      border-color: #148F95;
+    }
+
+
+    .form button {
+
+      margin-top: 20px;
+    }
+
+    .warnings {
+      width: 200px;
+      text-align: center;
+      margin: auto;
+      color: #F85E34;
+      padding-top: 20px;
+    }
+  </style>
+</head>
+
 <body>
-    <p class="changecolor"><center><img src="{{ url_for('static', filename='/images/Logofull.png') }}" width="300"></center></p>
-    <center><h2>Formulario de registro</h2></center>
-    <div class="d-flex justify-content-center align-items-center mt-5">
+  <p class="changecolor">
+    <center><img src="{{ url_for('static', filename='/images/Logofull.png') }}" width="300"></center>
+  </p>
+  <center>
+    <h2>Formulario de registro</h2>
+  </center>
+  <div class="d-flex justify-content-center align-items-center mt-5">
     <div class="contianer alert-success">
-        <form>
+      <form action="RegistrarUsuario" id="form" method="POST">
         <table class="table table-striped table-bordered">
-            <tr><td>Tipo de Identificación:</td> <td><select id="slc_Gender" name="slc_Gender" class="form-control" required>
+          <tr>
+            <td>Tipo de Identificación:</td>
+            <td><select id="idType" name="txttipoId" class="form-control" required>
                 <option value="CC">Cédula de Ciudadanía</option>
                 <option value="CE">Cédula de Extranjería</option>
                 <option value="PP">Pasaporte</option>
                 <option value="RC">Registro Civil</option>
                 <option value="TI">Tarjeta de Identidad</option>
-            </select></td></tr>
-            <tr><td>Número de Identificación:</td><td><input id="in_ID" name="in_ID" type="number" class="form-control" required></td></tr>
-            <tr><td>Nombre:</td><td><input id="in_Name" name="in_Name" type="text" class="form-control" required></td></tr>
-            <tr><td>Apellido:</td><td><input id="in_Name" name="in_Name" type="text" class="form-control" required></td></tr>
-            <tr><td>Cargo:</td><td><input id="in_User" name="in_User" type="text" class="form-control" required></td></tr>
-            <tr><td>Fecha de Nacimiento:</td> <td><input id="in_ID" name="in_ID" type="date" class="form-control"></td></tr>
-            <tr><td>Género:</td><td><select id="slc_Gender" name="slc_Gender" class="form-control">
+              </select></td>
+          </tr>
+          <tr>
+            <td>Número de Identificación:</td>
+            <td><input id="idNumber" name="in_ID" type="number" class="form-control" required></td>
+          </tr>
+          <tr>
+            <td>Nombre:</td>
+            <td><input id="in_Name" name="in_Name" type="text" class="form-control" required></td>
+          </tr>
+          <tr>
+            <td>Apellido:</td>
+            <td><input id="in_User" name="in_Name" type="text" class="form-control" required></td>
+          </tr>
+          <tr>
+            <td>Cargo:</td>
+            <td><input id="in_User" name="in_User" type="text" class="form-control" required></td>
+          </tr>
+          <tr>
+            <td>Fecha de Nacimiento:</td>
+            <td><input id="fechNac" name="in_ID" type="date" class="form-control"></td>
+          </tr>
+          <tr>
+            <td>Género:</td>
+            <td><select id="slc_Gender" name="slc_Gender" class="form-control">
                 <option value="X">Seleccione un Género</option>
                 <option value="M">Masculino</option>
                 <option value="F">Femenino</option>
                 <option value="NB">No binario</option>
-            </select></td></tr>
-            <tr><td>Número de Contacto:</td> <td><input id="in_ID" name="in_ID" type="number" class="form-control" required></td></tr>
-            <tr><td>Correo electrónico:</td><td><input id="in_Mail" name="in_Mail" type="email" class="form-control" required></td></tr>
-            <tr><td>Crea tu contraseña:</td>
-              <td><input id="in_PSWRD1" name="txtpassregistro" type="password" class="form-control" required></td>
-            </tr>
-            <tr>
-              <td>Confirma tu contraseña:</td>
-              <td><input id="in_PSWRD2" name="txtpassregistro" type="password" class="form-control" required></td>
-            </tr>
-            <tr>
-              <td><input id="chk_Terms" class="nav-item text-ceter" name="chk_Terms" type="checkbox"  required><br></td>
-              <td><em>Declaro haber leído y aceptar las
-                  condiciones generales del programa y
-                  la normativa sobre protección de datos</em></td>
+              </select></td>
+          </tr>
+          <tr>
+            <td>Número de Contacto:</td>
+            <td><input id="contactNum" name="in_ID" type="number" class="form-control" required></td>
+          </tr>
+          <tr>
+            <td>Correo electrónico:</td>
+            <td><input id="in_Mail" name="txtemailregistro" type="email" class="form-control" required></td>
+          </tr>
+          <tr>
+            <td>Crea tu contraseña:</td>
+            <td><input id="pwrd1" name="txtpassregistro" type="password" class="form-control" required></td>
+          </tr>
+          <tr>
+            <td>Confirma tu contraseña:</td>
+            <td><input id="pwrd2" name="txtpassregistro" type="password" class="form-control" required></td>
+          </tr>
+          <tr>
+            <td><input id="chk_Terms" class="nav-item text-ceter" name="chk_Terms" type="checkbox" required><br></td>
+            <td><em>Declaro haber leído y aceptar las
+                condiciones generales del programa y
+                la normativa sobre protección de datos</em></td>
           </tr>
         </table>
+      </div>
+    </div>
+    <p class="warnings" id="warnings"></p>
     <center><button type="submit" class="btn btn-dark">Enviar registro</button></center>
-    </div>
-    </div>
-    </form>
-
+  </form>
+  <script src="{{url_for('static', filename='JS/formValidation.js')}}"> </script>
 </body>
+
 </html>
