@@ -1,0 +1,109 @@
+<!doctype html>
+                        <html>
+                            <head>
+                                <meta charset='utf-8'>
+                                <meta name='viewport' content='width=device-width, initial-scale=1'>
+                                <title>Restaurar</title>
+                                <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='/images/logo.ico') }}" />
+                                <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css' rel='stylesheet'>
+                                <link href='#' rel='stylesheet'>
+                                <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+                                <style>
+                              
+                                body{
+
+  background-color: #fff;
+}
+
+.btr{
+
+  border-top-right-radius: 5px !important;
+}
+
+
+.btl{
+
+  border-top-left-radius: 5px !important;
+}
+
+.btn-dark {
+    color: #fff;
+    background-color: #148F95;
+    border-color: #148F95;
+}
+
+
+.btn-dark:hover {
+    color: #fff;
+    background-color: #148F95;
+    border-color: #148F95;
+}
+
+.changecolor {
+  color: #F85E34;
+}
+
+
+.nav-pills{
+
+  display:table !important;
+  width:100%;
+}
+
+.nav-pills .nav-link {
+    border-radius: 0px;
+        border-bottom: 1px solid #F85E34;
+
+}
+
+.nav-item{
+      display: table-cell;
+       background: #F85E34;
+}
+
+
+.form{
+
+  padding: 10px;
+      height: 300px;
+}
+
+.form input{
+
+  margin-bottom: 12px;
+  border-radius: 3px;
+}
+
+
+.form input:focus{
+
+  box-shadow: none;
+  border-color: #148F95;
+}
+
+
+.form button{
+
+  margin-top: 20px;
+}
+.gridimage {
+  max-width: 100%;
+}
+</style>
+  </head>
+<body>
+  <p class="changecolor"><center><img class="gridimage" src="{{ url_for('static', filename='/images/Logofull.png') }}" width="300"></center></p>
+  <center><h2>Restaurar contraseña</h2></center>
+  <div class="d-flex justify-content-center align-items-center mt-5">
+  <div class="contianer alert-success">
+        <form>
+        <table class="table table-striped table-bordered">
+            <tr><br>¡Señor usuario por favor ingrese su correo electrónico registrado al cual se le enviará una contraseña temporal con la<br>que podrá acceder a la plataforma; una vez ingrese puede modificar la contraseña entrando al perfil de usuario¡</tr><br>
+            <tr><td><strong>Correo electrónico:</strong></td><td><input id="in_Mail" name="in_Mail" type="email" class="form-control" required></td></tr>
+        </table>
+    <center><button type="submit" class="btn btn-dark">Enviar correo</button></center>
+    </div>
+    </div>
+    </form>
+</body>
+</html>
