@@ -96,7 +96,7 @@ def enviarCorreo():
         asunto=request.form["Asunto"]
         email_destino=request.form["CorreoDestino"]
         Mensaje=request.form["Mensaje"]
-        mensajemail="Has recibido un mensaje nuevo de "+Remitente+", por favor revise en nuestra plataforma.\n\n Muchas gracias por utilizar nuestro servico de mensajería empresarial."
+        mensajemail="Has recibido un mensaje nuevo de "+Remitente+", por favor revise en nuestra plataforma.\n\n Muchas gracias por utilizar MSN TEAM CORP."
         asunto=asunto.replace("SELECT","").replace("INSERT","").replace("DELETE","").replace("UPDATE","").replace("WHERE","")
         email_destino=email_destino.replace("SELECT","").replace("INSERT","").replace("DELETE","").replace("UPDATE","").replace("WHERE","")
         Mensaje=Mensaje.replace("SELECT","").replace("INSERT","").replace("DELETE","").replace("UPDATE","").replace("WHERE","")
@@ -136,17 +136,29 @@ def ResContrasena():
     if request.method=="POST":
         correo=request.form["in_Mail"]
         correo=correo.replace("SELECT","").replace("INSERT","").replace("DELETE","").replace("UPDATE","").replace("WHERE","")
-        #if 
-        #comparar si es el mismo correo registrado
-        
+       
         codigo=datetime.now()
         codigo2=str(codigo)
         codigo2=codigo2.replace("-","")
         codigo2=codigo2.replace(":","")
         codigo2=codigo2.replace(" ","")
         codigo2=codigo2.replace(".","")
+        PassNew1=codigo2.encode()
+        PassNew1=hashlib.sha384(PassNew1).hexdigest()
         
-        #return enviar correo con el código    
-    
-    if request.method=="GET":
-            return render_template("ResContraseña.html")                   
+        respuesta=controlDB.ResContrasena(correo)
+                
+        if len(respuesta)==0:
+            email_usuario=""
+            remitente=""
+            mensaje="ERROR el correo ingresado no está registado con ningún usuario o no se encuentra activo."
+            return render_template("Mensaje.html",data=mensaje)
+        else:
+            controlDB.ActualizarContraseña(PassNew1,correo)
+            mensaje="Señor@ usuario se le ha enviado una clave temporal a su correo "+correo+" por favor ingrese MSN TEAM CORP. y cambie la contraseña"
+            asunto="Recuperación Contraseña plataforma MSN TEAM CORP."
+            mensajemail="Señor@ usuario su clave temporal es "+codigo2+", por favor ingrese a su perfil y cambie su contraseña.\n\n Muchas gracias por utilizar MSN TEAM CORP."
+            envioemail.enviar(correo,asunto,mensajemail)
+            
+            return render_template("Mensaje.html",data=mensaje)
+    return render_template("ResContraseña.html")                  
