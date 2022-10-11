@@ -1,8 +1,9 @@
+/*Perfil*/
 body{
     margin-top:20px;
     color: #1a202c;
     text-align: left;
-    background-color: #e2e8f0;    
+    background-color: #148F95;    
 }
 .main-body {
     padding: 15px;
@@ -17,7 +18,7 @@ body{
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #fff;
+    background-color: rgb(255, 255, 255);
     background-clip: border-box;
     border: 0 solid rgba(0,0,0,.125);
     border-radius: .25rem;
@@ -51,3 +52,61 @@ body{
 .shadow-none {
     box-shadow: none!important;
 }
+
+/*Formulario de registro*/
+body{
+
+    background-color:#fff;
+  }
+  .table{
+    color: white;
+    background-color: #148F95;   
+  }
+ 
+  .btr{
+  
+    border-top-right-radius: 5px !important;
+  }
+
+  .btl{
+  
+    border-top-left-radius: 5px !important;
+  }
+  
+  .btn-dark {
+      color: #fff;
+      background-color: #F85E34;
+      border-color: #F85E34;
+  }
+  
+  
+  .btn-dark:hover {
+      color: #fff;
+      background-color: #148F95;
+      border-color: #148F95;
+  }
+  
+  .changecolor {
+    color: #F85E34;
+  }
+  
+  .form{
+  
+    padding: 10px;
+        height: 300px;
+  }
+  
+  .form input{
+  
+    margin-bottom: 12px;
+    border-radius: 3px;
+  }
+  .form input:focus{
+  
+    box-shadow: none;
+    border-color: #148F95;
+  }
+  
+  .form button{
+    margin-top: 20px;
+  }
