@@ -10,37 +10,36 @@
   <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 </head>
 <body>
-  <p class="changecolor"><center><img src="{{ url_for('static', filename='/images/Logofull.png') }}" width="300"></center></p>
+  <p class="changecolor"><center><img src="{{ url_for('static', filename='/images/Logofull.png') }}" width="250"></center></p>
   <center style="color: #F85e34"><h2>Formulario de registro</h2></center>
   <div class="d-flex justify-content-center align-items-center mt-5">
     <div class="contianer">
       <form action="RegistrarUsuario" method="POST">
         <table class="table table-hover">
-          <tr><td><font size ="5", color ="#fff">Tipo de Identificación:</font></td><td><select id="sl_t_doc" name="sl_t_doc" class="form-control" required>
+          <tr><td><font size ="4", color ="#fff">Tipo de Identificación:</font></td><td><select id="sl_t_doc" name="sl_t_doc" class="form-control" required>
                 <option value="X">Seleccione Tipo de Identificación</option>
                 <option value="CC">Cédula de Ciudadanía</option>
                 <option value="CE">Cédula de Extranjería</option>
                 <option value="PP">Pasaporte</option>
                 <option value="TI">Tarjeta de Identidad</option>
               </select></td></tr>
-            <tr><td><font size ="5", color ="#fff">Número de Identificación:</font></td><td><input id="in_ID" name="in_ID" type="text" class="form-control" required></td></tr>
-            <tr><td><font size ="5", color ="#fff">Nombre:</font></td><td><input id="txtnombregistro" name="txtnombregistro" type="text" class="form-control" required></td></tr>
-            <tr><td><font size ="5", color ="#fff">Apellido:</font></td><td><input id="txtapellidoregistro" name="txtapellidoregistro" type="text" class="form-control" required></td></tr>
-            <tr><td><font size ="5", color ="#fff">Número de Contacto:</font></td><td><input id="contactNum" name="contactNum" type="number" class="form-control" required></td></tr>
-            <tr><td><font size ="5", color ="#fff">Correo electrónico:</font></td><td><input id="txtemailregistro" name="txtemailregistro" type="email" class="form-control" required></td></tr>
-            <tr><td><font size ="5", color ="#fff">Dirección:</font></td><td><input id="in_User" name="in_User" type="text" class="form-control" required></td></tr>
-            <tr><td><font size ="5", color ="#fff">Cargo:</font></td><td><input id="in_User" name="in_User" type="text" class="form-control" required></td></tr>
-            <tr><td><font size ="5", color ="#fff">Fecha de Nacimiento:</font></td><td><input id="fechNac" name="fechNac" type="date" class="form-control"></td></tr>
-            <tr><td><font size ="5", color ="#fff">Género:</font><td><select id="slc_Gender" name="slc_Gender" class="form-control">
+            <tr><td><font size ="4", color ="#fff">Número de Identificación:</font></td><td><input id="in_ID" name="in_ID" type="text" class="form-control" required></td></tr>
+            <tr><td><font size ="4", color ="#fff">Nombre:</font></td><td><input id="txtnombregistro" name="txtnombregistro" type="text" class="form-control" required></td></tr>
+            <tr><td><font size ="4", color ="#fff">Apellido:</font></td><td><input id="txtapellidoregistro" name="txtapellidoregistro" type="text" class="form-control" required></td></tr>
+            <tr><td><font size ="4", color ="#fff">Número de Contacto:</font></td><td><input id="in_ID" name="in_ID" type="number" class="form-control" required></td></tr>
+            <tr><td><font size ="4", color ="#fff">Correo electrónico:</font></td><td><input id="txtemailregistro" name="txtemailregistro" type="email" class="form-control" required></td></tr>
+            <tr><td><font size ="4", color ="#fff">Dirección:</font></td><td><input id="in_User" name="in_User" type="text" class="form-control" required></td></tr>
+            <tr><td><font size ="4", color ="#fff">Cargo:</font></td><td><input id="in_User" name="in_User" type="text" class="form-control" required></td></tr>
+            <tr><td><font size ="4", color ="#fff">Género:</font><td><select id="slc_Gender" name="slc_Gender" class="form-control">
                 <option value="X">Seleccione un Género</option>
                 <option value="M">Masculino</option>
                 <option value="F">Femenino</option>
                 <option value="NB">No binario</option>
             </select></td></tr>
-            <tr><td><font size ="5", color ="#fff">Crea tu contraseña:</font></td>
+            <tr><td><font size ="4", color ="#fff">Crea tu contraseña:</font></td>
               <td><input id="pwrd1" name="txtpassregistro" type="password" class="form-control" required></td>
             </tr>
-            <tr><td><font size ="5", color ="#fff">Confirma tu contraseña:</font></td>
+            <tr><td><font size ="4", color ="#fff">Confirma tu contraseña:</font></td>
               <td><input id="pwrd2" name="txtpassregistro2" type="password" class="form-control" required></td>
             </tr>
             <tr>
