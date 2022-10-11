@@ -4,6 +4,7 @@
                                 <meta charset='utf-8'>
                                 <meta name='viewport' content='width=device-width, initial-scale=1'>
                                 <title>Restaurar</title>
+                                <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='/images/logo.ico') }}" />
                                 <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css' rel='stylesheet'>
                                 <link href='#' rel='stylesheet'>
                                 <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
@@ -84,7 +85,11 @@
 .form button{
 
   margin-top: 20px;
-}</style>
+}
+.gridimage {
+  max-width: 100%;
+}
+</style>
   </head>
 <body>
   <p class="changecolor"><center><img class="gridimage" src="{{ url_for('static', filename='/images/Logofull.png') }}" width="300"></center></p>
