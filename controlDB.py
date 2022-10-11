@@ -89,3 +89,11 @@ def ActualizarContraseña(passnew,origen):
     print(consulta)
     cursor.execute(consulta)
     db.commit()
+
+# restaurar contraseña
+def ResContrasena (correo, password):
+    db=sqlite3.connect("mensajes.s3db")
+    db.row_factory=sqlite3.Row
+    cursor=db.cursor()
+    #consulta=
+    #consultar si es el mismo correo
