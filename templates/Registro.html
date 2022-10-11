@@ -15,7 +15,7 @@
   <div class="d-flex justify-content-center align-items-center mt-5">
     <div class="contianer">
       <form action="RegistrarUsuario" method="POST">
-        <table class="table table-bordered table-hover">
+        <table class="table table-hover">
           <tr><td><font size ="5", color ="#fff">Tipo de Identificación:</font></td><td><select id="sl_t_doc" name="sl_t_doc" class="form-control" required>
                 <option value="X">Seleccione Tipo de Identificación</option>
                 <option value="CC">Cédula de Ciudadanía</option>
@@ -55,8 +55,9 @@
   <p class="warnings" id="warnings"></p>
   <center><button type="submit" class="btn btn-dark" data-toggle="button">Enviar registro</button></center>
   </form>
-  <script src="{{url_for('static', filename='JS/formValidation.js')}}"> </script> #importa el script de javascript con
-  la cual se valida la contraseña
+  <script src="{{url_for('static', filename='JS/formValidation.js')}}"> </script> <!importa el script de javascript con
+  la cual se valida la contraseña ->
+  <br>
 </body>
 
 </html>
