@@ -129,5 +129,24 @@ def ActContraseña():
         PassNew1=hashlib.sha384(PassNew1).hexdigest()
         respuesta=controlDB.ActualizarContraseña(PassNew1,email_usuario)
         return "Actualización de Contraseña Sastisfactoria"
+
+#Restaurar contraseña         
+@app.route("/ResContrasena",methods=["GET","POST"])
+def ResContrasena():
+    if request.method=="POST":
+        correo=request.form["in_Mail"]
+        correo=correo.replace("SELECT","").replace("INSERT","").replace("DELETE","").replace("UPDATE","").replace("WHERE","")
+        #if 
+        #comparar si es el mismo correo registrado
         
-                   
+        codigo=datetime.now()
+        codigo2=str(codigo)
+        codigo2=codigo2.replace("-","")
+        codigo2=codigo2.replace(":","")
+        codigo2=codigo2.replace(" ","")
+        codigo2=codigo2.replace(".","")
+        
+        #return enviar correo con el código    
+    
+    if request.method=="GET":
+            return render_template("ResContraseña.html")                   
