@@ -7,9 +7,8 @@
   <title>Register</title>
   <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='/images/logo.ico') }}" />
   <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css' rel='stylesheet'>
-  <link href='#' rel='stylesheet'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/style.css') }}">
   <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-  <style>
     body {
 
       background-color: #fff;
@@ -94,86 +93,55 @@
       color: #F85E34;
       padding-top: 20px;
     }
-  </style>
 </head>
 
 <body>
-  <p class="changecolor">
-    <center><img src="{{ url_for('static', filename='/images/Logofull.png') }}" width="300"></center>
-  </p>
-  <center>
-    <h2>Formulario de registro</h2>
-  </center>
+  <p class="changecolor"><center><img src="{{ url_for('static', filename='/images/Logofull.png') }}" width="300"></center></p>
+  <center style="color: #F85e34"><h2>Formulario de registro</h2></center>
   <div class="d-flex justify-content-center align-items-center mt-5">
-    <div class="contianer alert-success">
-      <form action="RegistrarUsuario" id="form" method="POST">
-        <table class="table table-striped table-bordered">
-          <tr>
-            <td>Tipo de Identificación:</td>
+    <div class="contianer">
+      <form action="RegistrarUsuario" method="POST">
+        <table class="table table-bordered table-hover">
+          <tr><td><font size ="5", color ="#fff">Tipo de Identificación:</font></td><td><select id="sl_t_doc" name="sl_t_doc" class="form-control" required>
             <td><select id="idType" name="txttipoId" class="form-control" required>
+                <option value="X">Seleccione Tipo de Identificación</option>
                 <option value="CC">Cédula de Ciudadanía</option>
                 <option value="CE">Cédula de Extranjería</option>
                 <option value="PP">Pasaporte</option>
                 <option value="RC">Registro Civil</option>
                 <option value="TI">Tarjeta de Identidad</option>
-              </select></td>
-          </tr>
-          <tr>
-            <td>Número de Identificación:</td>
-            <td><input id="idNumber" name="in_identificacion" type="number" class="form-control" required></td>
-          </tr>
-          <tr>
-            <td>Nombre:</td>
-            <td><input id="in_Name" name="txtnombregistro" type="text" class="form-control" required></td>
-          </tr>
-          <tr>
-            <td>Apellido:</td>
-            <td><input id="in_User" name="in_apellido" type="text" class="form-control" required></td>
-          </tr>
-          <tr>
-            <td>Cargo:</td>
-            <td><input id="in_User" name="in_User" type="text" class="form-control" required></td>
-          </tr>
-          <tr>
-            <td>Fecha de Nacimiento:</td>
-            <td><input id="fechNac" name="in_ID" type="date" class="form-control"></td>
-          </tr>
-          <tr>
-            <td>Género:</td>
-            <td><select id="slc_Gender" name="slc_Gender" class="form-control">
+              </select></td></tr>
+            <tr><td><font size ="5", color ="#fff">Número de Identificación:</font></td><td><input id="in_ID" name="in_ID" type="text" class="form-control" required></td></tr>
+            <tr><td><font size ="5", color ="#fff">Nombre:</font></td><td><input id="txtnombregistro" name="txtnombregistro" type="text" class="form-control" required></td></tr>
+            <tr><td><font size ="5", color ="#fff">Apellido:</font></td><td><input id="txtapellidoregistro" name="txtapellidoregistro" type="text" class="form-control" required></td></tr>
+            <tr><td><font size ="5", color ="#fff">Número de Contacto:</font></td><td><input id="contactNum" name="contactNum" type="number" class="form-control" required></td></tr>
+            <tr><td><font size ="5", color ="#fff">Correo electrónico:</font></td><td><input id="txtemailregistro" name="txtemailregistro" type="email" class="form-control" required></td></tr>
+            <tr><td><font size ="5", color ="#fff">Dirección:</font></td><td><input id="in_User" name="in_User" type="text" class="form-control" required></td></tr>
+            <tr><td><font size ="5", color ="#fff">Cargo:</font></td><td><input id="in_User" name="in_User" type="text" class="form-control" required></td></tr>
+            <tr><td><font size ="5", color ="#fff">Fecha de Nacimiento:</font></td><td><input id="fechNac" name="fechNac" type="date" class="form-control"></td></tr>
+            <tr><td><font size ="5", color ="#fff">Género:</font><td><select id="slc_Gender" name="slc_Gender" class="form-control">
                 <option value="X">Seleccione un Género</option>
                 <option value="M">Masculino</option>
                 <option value="F">Femenino</option>
                 <option value="NB">No binario</option>
-              </select></td>
-          </tr>
-          <tr>
-            <td>Número de Contacto:</td>
-            <td><input id="contactNum" name="in_contacto" type="number" class="form-control" required></td>
-          </tr>
-          <tr>
-            <td>Correo electrónico:</td>
-            <td><input id="in_Mail" name="txtemailregistro" type="email" class="form-control" required></td>
-          </tr>
-          <tr>
-            <td>Crea tu contraseña:</td>
+            </select></td></tr>
+          <tr><td><font size ="5", color ="#fff"><td>Crea tu contraseña:</font></td>
             <td><input id="pwrd1" name="txtpassregistro" type="password" class="form-control" required></td>
           </tr>
-          <tr>
-            <td>Confirma tu contraseña:</td>
+          <tr><td><font size ="5", color ="#fff">Confirma tu contraseña:</font></td>
             <td><input id="pwrd2" name="txtpassregistro2" type="password" class="form-control" required></td>
           </tr>
           <tr>
-            <td><input id="chk_Terms" class="nav-item text-ceter" name="chk_Terms" type="checkbox" required><br></td>
-            <td><em>Declaro haber leído y aceptar las
+            <td><input id="chk_Terms" class="nav-item text-center" name="chk_Terms" type="checkbox" required><br></td>
+            <td><font size ="4", color ="#fff"<em>Declaro haber leído y aceptar las
                 condiciones generales del programa y
-                la normativa sobre protección de datos</em></td>
+                la normativa sobre protección de datos</font></em></td>
           </tr>
         </table>
     </div>
   </div>
   <p class="warnings" id="warnings"></p>
-  <center><button type="submit" class="btn btn-dark">Enviar registro</button></center>
+  <center><button type="submit" class="btn btn-dark" data-toggle="button">Enviar registro</button></center>
   </form>
   <script src="{{url_for('static', filename='JS/formValidation.js')}}"> </script> #importa el script de javascript con
   la cual se valida la contraseña
