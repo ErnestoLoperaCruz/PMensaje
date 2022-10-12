@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RogerRest</title>
+  <title>Ya estas Registrado</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -22,7 +22,7 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="https://adminlte.io/themes/v3/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__shake" src="{{ url_for('static', filename='/images/Logofull.png') }}" alt="Logo" height="100" width="100">
   </div>
 
 
@@ -31,52 +31,35 @@
     <section class="content">
       <div class="container-fluid">
         <div class="contariner alert alert-info">
-          <h2>Center MAIL</h2>
+          <img src="{{ url_for('static', filename='/images/LogoH.png') }}" width="200px" class="d-inline-block align-top" alt="">
+          <h2>MSN TEAM CORP.</h2>
           </div>
         
           
           <div class=" row">
             <div class="col-12">
-              <!-- Custom Tabs -->
               <div class="card">
                 <div class="card-header d-flex p-0">
-                  <h3 class="card-title p-3">Informacion</h3>
-                  
-                </div><!-- /.card-header -->
+                  <h3 class="card-title p-3">Aviso</h3> 
+                </div>
                 <div class="card-body">
-                  
                     <h2 style='color:red'><center>{{data}}</center></h2>
-
                   <center><a href="/"><button class='btn btn-info'>Regresar</button></a></center>
-                  <!-- /.tab-content -->
-                </div><!-- /.card-body -->
+                </div>
               </div>
-              <!-- ./card -->
             </div>
-            <!-- /.col -->
           </div>
-
-          
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
+      </div>
     </section>
-    <!-- /.content -->
   </div>
  
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
+  <aside class="control-sidebar control-sidebar-dark"></aside>
 </div>
-<!-- ./wrapper -->
 
-<!-- jQuery -->
+
 <script src="https://adminlte.io/themes/v3/plugins/jquery/jquery.min.js"></script>
 <script src="https://adminlte.io/themes/v3/plugins/jquery-ui/jquery-ui.min.js"></script>
 
-<!-- Bootstrap 4 -->
 <script src="https://adminlte.io/themes/v3/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="https://adminlte.io/themes/v3/plugins/chart.js/Chart.min.js"></script>
 <script src="https://adminlte.io/themes/v3/plugins/sparklines/sparkline.js"></script>
@@ -100,7 +83,6 @@ function gestionmenus(){
   +"<br><button class='btn btn-info'>Procesar</button>";
 
   $("#contenido").html(info);
-
 
 }
 
