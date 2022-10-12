@@ -23,14 +23,15 @@
                 <option value="PP">Pasaporte</option>
                 <option value="TI">Tarjeta de Identidad</option>
               </select></td></tr>
-            <tr><td><font size ="4", color ="#fff">Número de Identificación:</font></td><td><input id="in_ID" name="in_ID" type="text" class="form-control" required></td></tr>
+            <tr><td><font size ="4", color ="#fff">Número de Identificación:</font></td><td><input id="n_doc" name="n_doc" type="text" class="form-control" required></td></tr>
             <tr><td><font size ="4", color ="#fff">Nombre:</font></td><td><input id="txtnombregistro" name="txtnombregistro" type="text" class="form-control" required></td></tr>
             <tr><td><font size ="4", color ="#fff">Apellido:</font></td><td><input id="txtapellidoregistro" name="txtapellidoregistro" type="text" class="form-control" required></td></tr>
-            <tr><td><font size ="4", color ="#fff">Número de Contacto:</font></td><td><input id="in_ID" name="in_ID" type="text" class="form-control" required></td></tr>
+            <tr><td><font size ="4", color ="#fff">Número de Contacto:</font></td><td><input id="n_tel" name="n_tel" type="text" class="form-control" required></td></tr>
             <tr><td><font size ="4", color ="#fff">Correo electrónico:</font></td><td><input id="txtemailregistro" name="txtemailregistro" type="email" class="form-control" required></td></tr>
-            <tr><td><font size ="4", color ="#fff">Dirección:</font></td><td><input id="in_User" name="in_User" type="text" class="form-control" required></td></tr>
-            <tr><td><font size ="4", color ="#fff">Cargo:</font></td><td><input id="in_User" name="in_User" type="text" class="form-control" required></td></tr>
-            <tr><td><font size ="4", color ="#fff">Género:</font><td><select id="slc_Gender" name="slc_Gender" class="form-control">
+            <tr><td><font size ="4", color ="#fff">Dirección:</font></td><td><input id="txtdireccionregistro" name="txtdireccionregistro" type="text" class="form-control" required></td></tr>
+            <tr><td><font size ="4", color ="#fff">Cargo:</font></td><td><input id="txtcargoregistro" name="txtcargoregistro" type="text" class="form-control" required></td></tr>
+            <tr><td><font size ="4", color ="#fff">Fecha de Nacimiento:</font></td><td><input id="sl_f_nac" name="sl_f_nac" type="date" class="form-control"></td></tr>
+            <tr><td><font size ="4", color ="#fff">Género:</font><td><select id="sl_genero" name="sl_genero" class="form-control">
                 <option value="X">Seleccione un Género</option>
                 <option value="M">Masculino</option>
                 <option value="F">Femenino</option>
@@ -40,7 +41,7 @@
               <td><input id="pwrd1" name="txtpassregistro" type="password" class="form-control" required></td>
             </tr>
             <tr><td><font size ="4", color ="#fff">Confirma tu contraseña:</font></td>
-              <td><input id="pwrd2" name="txtpassregistro2" type="password" class="form-control" required></td>
+              <td><input id="txtpassregistro2" name="txtpassregistro2" type="password" class="form-control" required></td>
             </tr>
             <tr>
               <td><input id="chk_Terms" class="nav-item text-center" name="chk_Terms" type="checkbox" required><br></td>
@@ -54,8 +55,7 @@
   <p class="warnings" id="warnings"></p>
   <center><button type="submit" class="btn btn-dark" data-toggle="button">Enviar registro</button></center>
   </form>
-  <script src="{{url_for('static', filename='JS/formValidation.js')}}"> </script> <!importa el script de javascript con
-  la cual se valida la contraseña ->
+  <script src="{{url_for('static', filename='JS/formValidation.js')}}"> </script> 
   <br>
 </body>
 
