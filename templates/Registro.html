@@ -24,8 +24,8 @@
                 <option value="TI">Tarjeta de Identidad</option>
               </select></td></tr>
             <tr><td><font size ="4", color ="#fff">Número de Identificación:</font></td><td><input id="n_doc" name="n_doc" type="text" class="form-control" required></td></tr>
-            <tr><td><font size ="4", color ="#fff">Nombre:</font></td><td><input id="txtnombregistro" name="txtnombregistro" type="text" class="form-control" required></td></tr>
-            <tr><td><font size ="4", color ="#fff">Apellido:</font></td><td><input id="txtapellidoregistro" name="txtapellidoregistro" type="text" class="form-control" required></td></tr>
+            <tr><td><font size ="4", color ="#fff">Nombres:</font></td><td><input id="txtnombregistro" name="txtnombregistro" type="text" class="form-control" required></td></tr>
+            <tr><td><font size ="4", color ="#fff">Apellidos:</font></td><td><input id="txtapellidoregistro" name="txtapellidoregistro" type="text" class="form-control" required></td></tr>
             <tr><td><font size ="4", color ="#fff">Número de Contacto:</font></td><td><input id="n_tel" name="n_tel" type="text" class="form-control" required></td></tr>
             <tr><td><font size ="4", color ="#fff">Correo electrónico:</font></td><td><input id="txtemailregistro" name="txtemailregistro" type="email" class="form-control" required></td></tr>
             <tr><td><font size ="4", color ="#fff">Dirección:</font></td><td><input id="txtdireccionregistro" name="txtdireccionregistro" type="text" class="form-control" required></td></tr>
@@ -55,7 +55,8 @@
   <p class="warnings" id="warnings"></p>
   <center><button type="submit" class="btn btn-dark" data-toggle="button">Enviar registro</button></center>
   </form>
-  <script src="{{url_for('static', filename='JS/formValidation.js')}}"> </script> 
+  <script src="{{url_for('static', filename='JS/formValidation.js')}}"> </script> <!importa el script de javascript con
+  la cual se valida la contraseña ->
   <br>
 </body>
 

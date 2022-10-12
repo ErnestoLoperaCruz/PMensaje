@@ -45,16 +45,16 @@ def RegistrarUsuario():
     if request.method=="POST":
         t_doc=request.form["sl_t_doc"]
         n_doc=request.form["n_doc"]
-        nombre=request.form["txtnombregistro"] 
+        nombre=request.form["txtnombregistro"] #el servidor está leyendo los datos del formulario en registro.html
         apellido=request.form["txtapellidoregistro"]
         n_tel=request.form["n_tel"]
-        correo=request.form["txtemailregistro"]
+        correo=request.form["txtemailregistro"]#""
         direccion=request.form["txtdireccionregistro"]
         cargo=request.form["txtcargoregistro"]
         f_nac=request.form["sl_f_nac"]
         genero=request.form["sl_genero"]
-        passw=request.form["txtpassregistro1"] 
-        
+        passw=request.form["txtpassregistro1"] #""
+
         t_doc=t_doc.replace("SELECT","").replace("INSERT","").replace("DELETE","").replace("UPDATE","").replace("WHERE","").replace("select","").replace("insert","").replace("delete","").replace("update","").replace("where","").replace("Select","").replace("Insert","").replace("Delete","").replace("Update","").replace("Where","")
         n_doc=n_doc.replace("SELECT","").replace("INSERT","").replace("DELETE","").replace("UPDATE","").replace("WHERE","").replace("select","").replace("insert","").replace("delete","").replace("update","").replace("where","").replace("Select","").replace("Insert","").replace("Delete","").replace("Update","").replace("Where","")
         nombre=nombre.replace("SELECT","").replace("INSERT","").replace("DELETE","").replace("UPDATE","").replace("WHERE","").replace("select","").replace("insert","").replace("delete","").replace("update","").replace("where","").replace("Select","").replace("Insert","").replace("Delete","").replace("Update","").replace("Where","")
@@ -66,42 +66,41 @@ def RegistrarUsuario():
         f_nac=f_nac.replace("SELECT","").replace("INSERT","").replace("DELETE","").replace("UPDATE","").replace("WHERE","").replace("select","").replace("insert","").replace("delete","").replace("update","").replace("where","").replace("Select","").replace("Insert","").replace("Delete","").replace("Update","").replace("Where","")
         genero=genero.replace("SELECT","").replace("INSERT","").replace("DELETE","").replace("UPDATE","").replace("WHERE","").replace("select","").replace("insert","").replace("delete","").replace("update","").replace("where","").replace("Select","").replace("Insert","").replace("Delete","").replace("Update","").replace("Where","")
         passw=passw.replace("SELECT","").replace("INSERT","").replace("DELETE","").replace("UPDATE","").replace("WHERE","").replace("select","").replace("insert","").replace("delete","").replace("update","").replace("where","").replace("Select","").replace("Insert","").replace("Delete","").replace("Update","").replace("Where","")
-        
-        passw2=passw.encode() 
-        passw2=hashlib.sha384(passw2).hexdigest() 
-        codigo=datetime.now() 
-        codigo2=str(codigo) 
+        passw2=passw.encode() #toma la contraseña del registro de usuario y la convierta en base64(para almacenarla de forma segura)
+        passw2=hashlib.sha384(passw2).hexdigest() #96 caracteres  #Encripción de la contraseña           
+        codigo=datetime.now() #retorna fecha y hora del instante en que se registra
+        codigo2=str(codigo) #se convierte la hora en un codigo str
         codigo2=codigo2.replace("-","")#""
         codigo2=codigo2.replace(":","")#""
         codigo2=codigo2.replace(" ","")#""
         codigo2=codigo2.replace(".","")#""
         
-        link = "http://localhost:5000/ActivarUsuario?codigo="+codigo2 
-        mensajemail="Sr@ "+nombre+" "+apellido+", usted se ha registrado en nuestra plataforma de mensajería empresarial; \n\n ingrese en el siguiente enlace para activar su cuenta :\n\n"+link+ "\n\nMuchas Gracias por confiar en nosotros."
+        link = "http://localhost:5000/ActivarUsuario?codigo="+codigo2 #enlace que se envia al correo
+        mensajemail="Sr@ "+nombre+" "+apellido+", usted se ha registrado en MSN TEAM CORP., nuestra plataforma de mensajería empresarial; \n\n ingrese en el siguiente enlace para activar su cuenta :\n\n"+link+ "\n\nMuchas Gracias por confiar en nosotros."
         asunto="MSN TEAM CORP. código de activación"
        
-        try:
-            respuesta=controlDB.regis_usuaro(t_doc,n_doc,nombre,apellido,n_tel,correo,direccion,cargo,f_nac,genero,passw2,codigo2) 
+        try:#encapsula el error, evita que se reviente el programa por errores por si falla no se reviente el codigo sino que muestre el mensaje error al registrar usuario..
+            respuesta=controlDB.regis_usuaro(t_doc,n_doc,nombre,apellido,n_tel,correo,direccion,cargo,f_nac,genero,passw2,codigo2) #Esta es la respuesta que da la base de datos acerca de la info de registro.Ej: por si ya esta regisrado el ususario, falle base de datos etc
         except Exception as e:
-            mensaje=f"Error al registrar usuario, verifique que el correo o el nombre de usuario no se encuentren registrados."
-            return render_template("Mensaje.html",data=mensaje) 
+            mensaje=f"Error al registrar usuario, verifique que el correo o el nombre de usuario no se encuentren registrados."#este mensaje es el que se muestra cuando no se pudo ejecutar el programa, es uno de los posibles errores
+            return render_template("Mensaje.html",data=mensaje) #la respuesta del navegador para mostrar el mensaje
         try:
-            envioemail.enviar(correo,asunto,mensajemail)
+            envioemail.enviar(correo,asunto,mensajemail)#en caso tal que se presente un problema en el servidor, 
         except Exception as e:
             mensaje=f"Error al enviar correo de activacion. {e}"
             return render_template("Mensaje.html",data=mensaje)
-        mensaje="El usuario "+nombre+" "+apellido+" se ha registrado satisfactoriamente, revise el correo para terminar el proceso de registro."
-        return render_template("Mensaje.html",data=mensaje)         
+        mensaje="El usuario "+nombre+" "+apellido+" se registro satisfactoriamente, revise el correo para terminar el proceso de registro."#mensaje que se muestra al ususario en a registrarse correctamente
+        return render_template("Mensaje.html",data=mensaje)       
     if request.method=="GET":
         return render_template("registro.html")
-   
+    
 @app.route("/ActivarUsuario",methods=["GET"])
 def ActivarUsuario():
     if request.method=="GET":
-        codigo = request.args.get('codigo')
-        respuesta=controlDB.activarU(codigo) 
+        codigo = request.args.get('codigo')#extrae codigo que se envia en la URL o enlace
+        respuesta=controlDB.activarU(codigo) #activacion del usuario con el codigo
         
-        if len(respuesta)==0: 
+        if len(respuesta)==0: #si la respuesta no se activa o viene vacia 0 no se activa el codigo
             mensaje="Codigo incorrecto"
             return render_template("Mensaje.html",data=mensaje)
         else:
@@ -124,7 +123,7 @@ def enviarCorreo():
         print(email_usuario)
         print(Remitente)
         return "Email enviado satisfactoriamente"
-   
+       
 @app.route("/HistorialMSNEnviados",methods=["GET","POST"])
 def HistorialMSNEnviados():
     resultado=controlDB.vermsnenviados(email_usuario)
@@ -135,6 +134,7 @@ def HistorialMSNRecibidos():
     resultado=controlDB.vermsnrecibidos(email_usuario)
     return render_template("MSN.html",data=resultado)
 
+
 @app.route("/ActContraseña",methods=["GET","POST"])
 def ActContraseña():
     if request.method=="POST":
@@ -144,7 +144,8 @@ def ActContraseña():
         PassNew1=hashlib.sha384(PassNew1).hexdigest()
         respuesta=controlDB.ActualizarContraseña(PassNew1,email_usuario)
         return "Actualización de Contraseña Sastisfactoria"
-       
+
+#Restaurar contraseña         
 @app.route("/ResContrasena",methods=["GET","POST"])
 def ResContrasena():
     if request.method=="POST":
