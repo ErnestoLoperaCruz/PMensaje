@@ -77,8 +77,8 @@ def RegistrarUsuario():
         codigo2=codigo2.replace(".","")#""
         
         link = "http://localhost:5000/ActivarUsuario?codigo="+codigo2 
-        mensajemail="Sr@ "+nombre+" "+apellido+", usted se ha registrado en nuestra plataforma de mensajería empresarial; \n\n ingrese en el siguiente enlace para activar su cuenta :\n\n"+link+ "\n\nMuchas Gracias"
-        asunto="Equipo 14 te ha enviado codigo de activacion de la plataforma de mensajería"
+        mensajemail="Sr@ "+nombre+" "+apellido+", usted se ha registrado en nuestra plataforma de mensajería empresarial; \n\n ingrese en el siguiente enlace para activar su cuenta :\n\n"+link+ "\n\nMuchas Gracias por confiar en nosotros."
+        asunto="MSN TEAM CORP. código de activación"
        
         try:
             respuesta=controlDB.regis_usuaro(t_doc,n_doc,nombre,apellido,n_tel,correo,direccion,cargo,f_nac,genero,passw2,codigo2) 
