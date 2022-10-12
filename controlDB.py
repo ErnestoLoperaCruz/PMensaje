@@ -38,12 +38,11 @@ def listadoUsuarios(correo):
     return resultado
 
 
-def regis_usuaro(nombre,correo,password,codigo):
-    print(nombre,correo,password,codigo)
+def regis_usuaro(t_doc,n_doc,nombre,apellido,n_tel,correo,direccion,cargo,f_nac,genero,passw2,codigo2):
     db=sqlite3.connect("mensajes.s3db")
     db.row_factory=sqlite3.Row
     cursor=db.cursor()
-    consulta="insert into usuarios (nombres,correo,password,estado,codigoactivacion) values ('"+nombre+"','"+correo+"','"+password+"','0','"+codigo+"')"
+    consulta="insert into usuarios(t_doc,n_doc,nombres,apellidos,n_tel,correo,direccion,cargo,f_nac,genero,password,codigoactivacion,estado) values ('"+t_doc+"','"+n_doc+"','"+nombre+"','"+apellido+"','"+n_tel+"','"+correo+"','"+direccion+"','"+cargo+"','"+f_nac+"','"+genero+"','"+passw2+"','"+codigo2+"','0')"
     cursor.execute(consulta)
     db.commit()
     return "Usuario Registrado Sastisfactoriamente"
