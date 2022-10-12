@@ -26,7 +26,7 @@ def VerificarUsuario():
         respuesta=controlDB.validar_usuaro(correo,passw2)
                 
         global email_usuario
-        global Remitente
+        global remitente
         if len(respuesta)==0:
             email_usuario=""
             remitente=""
@@ -34,7 +34,7 @@ def VerificarUsuario():
             return render_template("Mensaje.html",data=mensaje)
         else:
             email_usuario=correo
-            Remitente=respuesta[0][1]
+            remitente=str((respuesta [0][3])+" "+(respuesta [0][4]))
             respuesta2=controlDB.listadoUsuarios(correo)
             
             return render_template("CrearMensajes.html",data=respuesta2,usuario=respuesta)
@@ -78,18 +78,19 @@ def RegistrarUsuario():
         link = "http://localhost:5000/ActivarUsuario?codigo="+codigo2 #enlace que se envia al correo
         mensajemail="Sr@ "+nombre+" "+apellido+", usted se ha registrado en MSN TEAM CORP., nuestra plataforma de mensajería empresarial; \n\n ingrese en el siguiente enlace para activar su cuenta :\n\n"+link+ "\n\nMuchas gracias por confiar en nosotros."
         asunto="MSN TEAM CORP. código de activación"
-       
+        usuario=str(nombre)+" "+(apellido)         
         try:
-            respuesta=controlDB.regis_usuaro(t_doc,n_doc,nombre,apellido,n_tel,correo,direccion,cargo,f_nac,genero,passw2,codigo2) 
+            respuesta=controlDB.regis_usuaro(t_doc,n_doc,nombre,apellido,n_tel,correo,direccion,cargo,f_nac,genero,passw2,codigo2)
+             
         except Exception as e:
-            mensaje=f"Error al registrar usuario, verifique que el correo o el nombre de usuario no se encuentren registrados."#este mensaje es el que se muestra cuando no se pudo ejecutar el programa, es uno de los posibles errores
+            mensaje=f"Error al registrar usuario "+usuario+", el correo "+correo+" se encuentra registrados."#este mensaje es el que se muestra cuando no se pudo ejecutar el programa, es uno de los posibles errores
             return render_template("Mensaje.html",data=mensaje) 
         try:
             envioemail.enviar(correo,asunto,mensajemail)
         except Exception as e:
             mensaje=f"Error al enviar correo de activacion. {e}"
             return render_template("Mensaje.html",data=mensaje)
-        mensaje="El usuario "+nombre+" "+apellido+" se registro satisfactoriamente, revise el correo para terminar el proceso de registro."
+        mensaje=f"El usuario "+usuario+", se ha registrado correctamente, verifica tu correo "+correo+", se te ha enviado las instrucciones para activar la cuenta."
         return render_template("Mensaje.html",data=mensaje)       
     if request.method=="GET":
         return render_template("registro.html")
@@ -104,7 +105,8 @@ def ActivarUsuario():
             mensaje="Codigo incorrecto"
             return render_template("Mensaje.html",data=mensaje)
         else:
-            mensaje="Usuario Activado Satisfactoriamente"
+            remitente=str((respuesta [0][3])+" "+(respuesta [0][4]))
+            mensaje="Usuario "+remitente+" Activado Satisfactoriamente"
             return render_template("Mensaje.html",data=mensaje)
         
         
