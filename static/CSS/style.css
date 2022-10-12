@@ -148,13 +148,19 @@ body{
   margin-top: 20px;
 }
 
+/*Crear Mensaje*/
+.example {background-color: #148F95; }
+
+
+
+
 
 /*Perfil*/
 body{
     margin-top:20px;
     color: #1a202c;
     text-align: left;
-    background-color: #e2f8fa;    
+    background-color: #eff5f5;    
 }
 .main-body {
     padding: 15px;
