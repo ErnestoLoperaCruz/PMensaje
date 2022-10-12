@@ -81,7 +81,7 @@ def RegistrarUsuario():
         asunto="Equipo 14 te ha enviado codigo de activacion de la plataforma de mensajería"
        
         try:
-            respuesta=controlDB.regis_usuaro(nombre,correo, passw2,codigo2) 
+            respuesta=controlDB.regis_usuaro(t_doc,n_doc,nombre,apellido,n_tel,correo,direccion,cargo,f_nac,genero,passw2,codigo2) 
         except Exception as e:
             mensaje=f"Error al registrar usuario, verifique que el correo o el nombre de usuario no se encuentren registrados."
             return render_template("Mensaje.html",data=mensaje) 
@@ -90,7 +90,7 @@ def RegistrarUsuario():
         except Exception as e:
             mensaje=f"Error al enviar correo de activacion. {e}"
             return render_template("Mensaje.html",data=mensaje)
-        mensaje="El usuario "+nombre+" "+apellido+" se ha registrado satisfactoriamente, revise el correo para terminar el proceso de registro."#mensaje que se muestra al ususario en a registrarse correctamente
+        mensaje="El usuario "+nombre+" "+apellido+" se ha registrado satisfactoriamente, revise el correo para terminar el proceso de registro."
         return render_template("Mensaje.html",data=mensaje)         
     if request.method=="GET":
         return render_template("registro.html")
