@@ -17,77 +17,76 @@
    <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
    <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/daterangepicker/daterangepicker.css">
    <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/summernote/summernote-bs4.min.css">
+   <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/style.css') }}">
  </head>
  <body class="hold-transition sidebar-mini layout-fixed">
- <div class="wrapper">
- 
-   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="{{ url_for('static', filename='/images/Logofull.png') }}" alt="Logo" height="100" width="100">
-   </div>
-   <div class="">  
-     <section class="content">
-       <div class="container-fluid">
-          <div class="contariner alert alert-primary"><!--Cambio de ancho del contenedor-->
-            <nav class="navbar navbar-expand-lg"> 
-              <a class="navbar-brand" href="#">
-                <img src="{{ url_for('static', filename='/images/LogoH.png') }}" width="200px" class="d-inline-block align-top" alt="">
-              </a>
-                <ul class="navbar-nav ml-auto" role="navigation">
-                  <li class="nav-item">
-                    <a class="nav-link active" href="#tab_1" data-toggle="tab">Envío de Mensajes<span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item" onclick="verHistorial()">
-                    <a class="nav-link" href="#tab_2" data-toggle="tab">Historial</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#tab_3" data-toggle="tab">Perfil</a>
-                  </li> 
-                  <li class="nav-item">
-                    <a class="nav-link" href="/" data-toggle="tab">Cerrar Sesión</a>
-                  </li> 
-                </ul>
-              </nav>
-                  <!--<h2>- MSN TEAM CORP - {{usuario[0].nombres}} </h2>-->
-          </div>
-           
-          <div class="border-bottom">
-            <div class="row">
-              <div class="col-12"> 
-                <div class="card">
-                  <h2 class="m-4 ml-4" style="color: #F85E34">¡Hola {{usuario[0].nombres}} {{usuario[0].apellidos}}!</h2>
-                  <div class="card-header d-flex p-0">
-                  </div><!-- /.card-header -->
+    <div class="wrapper">
+      <div class="preloader flex-column justify-content-center align-items-center">
+        <img class="animation__shake" src="{{ url_for('static', filename='/images/Logofull.png') }}" alt="Logo" height="100" width="100">
+      </div>
+      <body style="background-color:#148F95;"></body>
+      <div class="">  
+        <section class="content">
+          <div class="container">
+             <div class="contariner alert alert-light" role="alert"><!--Cambio de ancho del contenedor-->
+                  <nav class="navbar navbar-expand-lg"> 
+                    <a class="navbar-brand" href="#">
+                     <img src="{{ url_for('static', filename='/images/LogoH.png') }}" width="250px" class="d-inline-block align-top" alt="">
+                    </a>
+                    <ul class="navbar-nav ml-auto" role="navigation">
+                      <li class="nav-item1">
+                       <a class="nav-link active" style="color: #148F95"ref="#tab_1" data-toggle="tab">Envío de Mensajes</span></a>
+                      </li>
+                      <li class="nav-item1" onclick="verHistorial()">
+                       <a class="nav-link" style="color: #148F95" href="#tab_2" data-toggle="tab">Historial</a>
+                      </li>
+                      <li class="nav-item1">
+                        <a class="nav-link" style="color: #148F95" href="#tab_3" data-toggle="tab">Perfil</a>
+                      </li> 
+                      <li class="nav-item1">
+                        <a class="nav-link" style="color: #148F95" href="/" data-toggle="tab">Cerrar Sesión</a>
+                      </li> 
+                    </ul>
+                  </nav>  
+              </div>
+              <div class="border-bottom">
+               <div class="row">
+                  <div class="col-12"> 
+                    <div class="card">
+                      <h2 class="m-4 ml-4" style="color: #F85E34">¡Hola {{usuario[0].nombres}} {{usuario[0].apellidos}}!</h2>
+                      <div class="card-header d-flex p-0">
+                      </div><!-- /.card-header -->
 
-                  <div class="card-body">
-                   <div class="tab-content">
-                     <div class="tab-pane active" id="tab_1">
-                       <form onsubmit="return enviarCorreo()">
-                          <label for="exampleFormControlInput1" class="form-label" style="color: #148F95">Asunto</label>
-                          <input type="text" required class='form-control' id="txtAsuntoMSN" name="txtAsuntoMSN"> 
-                          <hr>
-                          <label for="exampleFormControlInput1" class="form-label" style="color: #148F95">Seleccione el empleado</label>
-                          <select id="sl_destinoMSN" name="sl_destinoMSN" class="form-control" required> 
-                             <option value="">...</option>
-                             {%for d in data %}
-                             <option value="{{d['correo']}}">{{d['nombres']}} {{d['apellidos']}}</option>
-                             {%endfor%}
-                           </select>
-                           <hr>
-                           <label for="exampleFormControlInput1" class="form-label" style="color: #148F95">Mensaje</label>
-                           <textarea class="form-control" required placeholder="Escriba su mensaje ..." id="txtMSN" name="txtMSN"></textarea>
-                           <hr>
+                    <div class="card-body">
+                      <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">
+                          <form onsubmit="return enviarCorreo()">
+                            <label for="exampleFormControlInput1" class="form-label" style="color: #148F95">Asunto</label>
+                            <input type="text" required class='form-control' id="txtAsuntoMSN" name="txtAsuntoMSN"> 
+                            <hr>
+                            <label for="exampleFormControlInput1" class="form-label" style="color: #148F95">Seleccione el empleado</label>
+                            <select id="sl_destinoMSN" name="sl_destinoMSN" class="form-control" required> 
+                              <option value="">...</option>
+                              {%for d in data %}
+                              <option value="{{d['correo']}}">{{d['nombres']}} {{d['apellidos']}}</option>
+                               {%endfor%}
+                             </select>
+                            <hr>
+                            <label for="exampleFormControlInput1" class="form-label" style="color: #148F95">Mensaje</label>
+                            <textarea class="form-control" required placeholder="Escriba su mensaje ..." id="txtMSN" name="txtMSN"></textarea>
+                            <hr>
                             <center>
                               <button type='submit' class='btn btn-info'>Enviar</button>
                               <button type='reset' class='btn btn-danger'>Cancelar</button>
                             </center>
-                       </form>
-                     </div>
-                     <!-- /.tab-pane -->
-                     <div class="tab-pane" id="tab_2">
-                       <div class="col-12">
+                          </form>
+                        </div>
+
+                        <div class="tab-pane" id="tab_2">
+                        <div class="col-12">
                            <div id="email_enviados" name="email_enviados">Mensajes Enviados</div>
                            <div id="email_recibidos" name="email_recibidos">Mensajes Recibios</div>
-                       </div>
+                        </div>
                      </div>
                      <!-- /.tab-pane -->
                      <div class="tab-pane" id="tab_3">
@@ -188,12 +187,13 @@
    </div>
   
  
-   <!-- Control Sidebar -->
-   <aside class="control-sidebar control-sidebar-dark">
-     <!-- Control sidebar content goes here -->
-   </aside>
-   <!-- /.control-sidebar -->
- </div>
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+      </aside>
+      <!-- /.control-sidebar -->
+    </div>
+  </body>
  <!-- ./wrapper -->
  
  <!-- jQuery -->

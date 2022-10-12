@@ -3,7 +3,7 @@
 
 /*Incio*/
 body{
-  background-color: #fff;
+  background-color: #eff5fe;;
 }
 
 .btr {
@@ -149,9 +149,19 @@ body{
 }
 
 /*Crear Mensaje*/
-.example {background-color: #148F95; }
 
+.nav-link {
+  font-size: 17px;
+  font-weight: normal;
+  text-decoration: none
+}
 
+.tab-pane{
+  font-size: 15px;
+  font-weight: normal;
+  text-decoration: none
+  
+}
 
 
 
@@ -159,8 +169,7 @@ body{
 body{
     margin-top:20px;
     color: #1a202c;
-    text-align: left;
-    background-color: #eff5f5;    
+    text-align: left;    
 }
 .main-body {
     padding: 15px;
