@@ -54,7 +54,7 @@
             <div class="row">
               <div class="col-12"> 
                 <div class="card">
-                  <h2 class="m-4 ml-4" style="color: #F85E34">¡Hola {{usuario[0].nombres}}!</h2>
+                  <h2 class="m-4 ml-4" style="color: #F85E34">¡Hola {{usuario[0].nombres}} {{usuario[0].apellidos}}!</h2>
                   <div class="card-header d-flex p-0">
                   </div><!-- /.card-header -->
 
@@ -69,7 +69,7 @@
                           <select id="sl_destinoMSN" name="sl_destinoMSN" class="form-control" required> 
                              <option value="">...</option>
                              {%for d in data %}
-                             <option value="{{d['correo']}}">{{d['nombres']}}</option>
+                             <option value="{{d['correo']}}">{{d['nombres']}} {{d['apellidos']}}</option>
                              {%endfor%}
                            </select>
                            <hr>
