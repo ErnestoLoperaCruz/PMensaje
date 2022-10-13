@@ -78,22 +78,16 @@ def RegistrarUsuario():
         link = "http://localhost:5000/ActivarUsuario?codigo="+codigo2 #enlace que se envia al correo
         mensajemail="Sr@ "+nombre+" "+apellido+", usted se ha registrado en MSN TEAM CORP., nuestra plataforma de mensajería empresarial; \n\n ingrese en el siguiente enlace para activar su cuenta :\n\n"+link+ "\n\nMuchas gracias por confiar en nosotros."
         asunto="MSN TEAM CORP. código de activación"
-        usuario=str(nombre)+" "+(apellido)         
+        usuario=str(nombre)+" "+(apellido)
+                 
         try:
             respuesta=controlDB.regis_usuaro(t_doc,n_doc,nombre,apellido,n_tel,correo,direccion,cargo,f_nac,genero,passw2,codigo2)
-             
-        except Exception as e:
-            mensaje=f"Error al registrar usuario "+usuario+", el correo "+correo+" se encuentra registrados."#este mensaje es el que se muestra cuando no se pudo ejecutar el programa, es uno de los posibles errores
-            return render_template("Mensaje.html",data=mensaje) 
-        try:
-            envioemail.enviar(correo,asunto,mensajemail)
-        except Exception as e:
-            mensaje=f"Error al enviar correo de activacion. {e}"
-            return render_template("Mensaje.html",data=mensaje)
-        mensaje=f"El usuario "+usuario+", se ha registrado correctamente, verifica tu correo "+correo+", se te ha enviado las instrucciones para activar la cuenta."
-        return render_template("Mensaje.html",data=mensaje)       
-    if request.method=="GET":
-        return render_template("registro.html")
+            respuesta1=envioemail.enviar(correo,asunto,mensajemail)
+            return render_template("Mensaje.html",data=respuesta+respuesta1)
+        except :
+            return render_template("Mensaje.html",data=respuesta)
+
+    return render_template("registro.html")
     
 @app.route("/ActivarUsuario",methods=["GET"])
 def ActivarUsuario():
@@ -129,12 +123,12 @@ def enviarCorreo():
 @app.route("/HistorialMSNEnviados",methods=["GET","POST"])
 def HistorialMSNEnviados():
     resultado=controlDB.vermsnenviados(email_usuario)
-    return render_template("MSN.html",data=resultado)
+    return render_template("MSNENV.html",data=resultado)
 
 @app.route("/HistorialMSNRecibidos",methods=["GET","POST"])
 def HistorialMSNRecibidos():
     resultado=controlDB.vermsnrecibidos(email_usuario)
-    return render_template("MSN.html",data=resultado)
+    return render_template("MSNREC.html",data=resultado)
 
 
 @app.route("/ActContraseña",methods=["GET","POST"])
@@ -145,7 +139,8 @@ def ActContraseña():
         PassNew1=PassNew.encode()
         PassNew1=hashlib.sha384(PassNew1).hexdigest()
         respuesta=controlDB.ActualizarContraseña(PassNew1,email_usuario)
-        return "Actualización de Contraseña Sastisfactoria"
+        mensaje="Actualización de Contraseña Sastisfactoria"
+        return render_template("ActContraseña.html",data=respuesta)
 
 #Restaurar contraseña         
 @app.route("/ResContrasena",methods=["GET","POST"])

@@ -3,7 +3,7 @@
  <head>
   <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='/images/logo.ico') }}" />
    <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="width=device-width, initial-scale=1,5">
    <title>Enviar Mensaje</title>
  
    <!-- Google Font: Source Sans Pro -->
@@ -17,7 +17,9 @@
    <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
    <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/daterangepicker/daterangepicker.css">
    <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/summernote/summernote-bs4.min.css">
+   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
    <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/style.css') }}">
+
  </head>
  <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -27,15 +29,15 @@
       <body style="background-color:#148F95;"></body>
       <div class="">  
         <section class="content">
-          <div class="container">
+          <div class="container col-10">
              <div class="contariner alert alert-light" role="alert"><!--Cambio de ancho del contenedor-->
                   <nav class="navbar navbar-expand-lg"> 
                     <a class="navbar-brand" href="#">
                      <img src="{{ url_for('static', filename='/images/LogoH.png') }}" width="250px" class="d-inline-block align-top" alt="">
                     </a>
-                    <ul class="navbar-nav ml-auto" role="navigation">
+                    <ul class="navbar-nav ml-auto p-2" role="navigation">
                       <li class="nav-item1">
-                       <a class="nav-link active" style="color: #148F95"ref="#tab_1" data-toggle="tab">Envío de Mensajes</span></a>
+                       <a class="nav-link active" style="color: #148F95"ref="#tab_1" data-toggle="tab">Envío de Mensajes</a>
                       </li>
                       <li class="nav-item1" onclick="verHistorial()">
                        <a class="nav-link" style="color: #148F95" href="#tab_2" data-toggle="tab">Historial</a>
@@ -84,8 +86,8 @@
 
                         <div class="tab-pane" id="tab_2">
                         <div class="col-12">
+                           <div id="email_recibidos" name="email_recibidos">Mensajes Recibidos</div>
                            <div id="email_enviados" name="email_enviados">Mensajes Enviados</div>
-                           <div id="email_recibidos" name="email_recibidos">Mensajes Recibios</div>
                         </div>
                      </div>
                      <!-- /.tab-pane -->
@@ -102,7 +104,7 @@
                                         <h4>Ximena Martinez Huerto</h4>
                                         <p class="text-secondary mb-1">Servicio al Cliente</p>
                                         <p class="text-muted font-size-sm">Área de Marketing</p>
-                                        <a href="ActContraseña"><button class="btn btn-primary">Cambiar Contraseña</button></a>
+                                        <a><button class="btn btn-primary">Cambiar Contraseña</button></a>
                                         <button class="btn btn-outline-primary">Mensajes</button>
                                       </div>
                                     </div>
@@ -214,6 +216,8 @@
  <script src="https://adminlte.io/themes/v3/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
  <script src="https://adminlte.io/themes/v3/dist/js/adminlte.js"></script>
  <script src="https://adminlte.io/themes/v3/dist/js/pages/dashboard.js"></script>
+ <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+ 
  
  <script>
  
@@ -246,7 +250,8 @@
      type : 'POST',
      success : function(r){
          r="<center class='alert alert-info'><strong>Bandeja de Mensajes Enviados </strong></center>"+r;
-         $("#email_enviados").html(r);        
+         $("#email_enviados").html(r);
+         $('#msnenv').DataTable();         
      },
      error : function(xhr, status) {
        alert('Error intente en otro momento');
@@ -259,7 +264,8 @@
      type : 'POST',
      success : function(r){
          r="<center class='alert alert-info'><strong>Bandeja de Mensajes Recibidos</strong></center>"+r;
-         $("#email_recibidos").html(r);        
+         $("#email_recibidos").html(r);
+         $('#msnrec').DataTable();         
      },
      error : function(xhr, status) {
        alert('Error intente en otro momento');
