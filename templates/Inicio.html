@@ -8,97 +8,8 @@
   <title>Login MSN TEAM CORP</title>
   <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css' rel='stylesheet'>
   <link href='#' rel='stylesheet'>
-  <link rel="stylesheet" href="style.css"
+  <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/style.css') }}">
   <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-  <style>
-    body {
-
-      background-color: #fff;
-    }
-
-    .btr {
-
-      border-top-right-radius: 5px !important;
-    }
-
-
-    .btl {
-
-      border-top-left-radius: 5px !important;
-    }
-
-    .btn-dark {
-      color: #fff;
-      background-color: #148F95;
-      border-color: #148F95;
-    }
-
-
-    .btn-dark:hover {
-      color: #fff;
-      background-color: #148F95;
-      border-color: #148F95;
-    }
-
-    .changecolor {
-      color: #F85E34;
-    }
-
-
-    .nav-pills {
-
-      display: table !important;
-      width: 100%;
-    }
-
-    .nav-pills .nav-link {
-      border-radius: 0px;
-      border-bottom: 1px solid #F85E34;
-
-    }
-
-    .nav-item {
-      display: table-cell;
-      background: #F85E34;
-    }
-
-
-    .form {
-
-      padding: 10px;
-      height: 300px;
-    }
-
-    .form input {
-
-      margin-bottom: 12px;
-      border-radius: 3px;
-    }
-
-
-    .form input:focus {
-
-      box-shadow: none;
-      border-color: #148F95;
-    }
-
-
-    .form button {
-
-      margin-top: 20px;
-    }
-
-    .grid {
-      display:grid;
-      grid-template-columns:50% 50%;
-      margin:20px;
-      flex-wrap:wrap;
-  }
-
-  .gridimage {
-    max-width: 100%;
-  }
-  </style>
 </head>
 
 <body className='snippet-body'>
@@ -111,14 +22,11 @@
 
     <div>
       <br>
-      <center><p class="changecolor"><img class="gridimage" src="{{ url_for('static', filename='/images/Logofull.png') }}" width="500"></p></center>
+      <center><p class="changecolor"><img class="gridimage" src="{{ url_for('static', filename='/images/Logofull.png') }}" width="300"></p></center>
       <br>
-      <center>
-        <h3><strong>Ingrese a su cuenta</strong></h3>
-      </center>
+      <center style="color: #F85e34"><h3><strong>Ingrese a su cuenta</strong></h3></center>
       <br>
       <br>
-
       <div class="form px-4 pt-5">
 
         <form action="VerificarUsuario" method="POST">
@@ -131,11 +39,11 @@
           <button type="submit" class="btn btn-dark btn-block">Iniciar Sesión</button>
         </form>
         <br>
-        <center><label for="#">¿Olvidó su contraseña? <a class="changecolor" href="">Restaura tu contraseña</a></label></center>
+        <center><label for="#">¿Olvidó su contraseña? <a class="changecolor" href="/ResContrasena">Restaura tu contraseña</a></label></center>
       </div>
       <br>
       <center><label for="#">¿No tienes una cuenta? <a class="changecolor"
-            href="RegistrarUsuario">Regístrese</a></label></center>
+            href="/RegistrarUsuario">Regístrese</a></label></center>
       <br>
       <br>
       <br>
@@ -148,7 +56,6 @@
   </div>
   <script type='text/javascript'
     src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js'></script>
-
 
 </body>
 

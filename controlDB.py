@@ -38,25 +38,17 @@ def listadoUsuarios(correo):
     return resultado
 
 
-def regis_usuaro(nombre,correo,password,codigo):
-    print(nombre,correo,password,codigo)
-    db=sqlite3.connect("mensajes.s3db")
-    db.row_factory=sqlite3.Row
-    cursor=db.cursor()
-    consulta="insert into usuarios (nombres,correo,password,estado,codigoactivacion) values ('"+nombre+"','"+correo+"','"+password+"','0','"+codigo+"')"
-    cursor.execute(consulta)
-    db.commit()
-    return "Usuario Registrado Sastisfactoriamente"
-    #try:
-        #db=sqlite3.connect("mensajes.s3db")
-        #db.row_factory=sqlite3.Row
-        #cursor=db.cursor()
-        #consulta="insert into usuarios (nombres,correo,password,estado,codigoactivacion) values ('"+nombre+"','"+correo+"','"+password+"','0','"+codigo+"')"
-        #cursor.execute(consulta)
-        #db.commit()
-        #return "Usuario Registrado Sastisfactoriamente"
-    #except:
-        #return "Error, el correo "+correo+" y/o el usuario "+nombre+" ingresados ya se encuentran registrados en nuestra plataforma"
+def regis_usuaro(t_doc,n_doc,nombre,apellido,n_tel,correo,direccion,cargo,f_nac,genero,passw2,codigo2):
+    try :    
+        db=sqlite3.connect("mensajes.s3db")
+        db.row_factory=sqlite3.Row
+        cursor=db.cursor()
+        consulta="insert into usuarios(t_doc,n_doc,nombres,apellidos,n_tel,correo,direccion,cargo,f_nac,genero,password,codigoactivacion,estado) values ('"+t_doc+"','"+n_doc+"','"+nombre+"','"+apellido+"','"+n_tel+"','"+correo+"','"+direccion+"','"+cargo+"','"+f_nac+"','"+genero+"','"+passw2+"','"+codigo2+"','0')"
+        cursor.execute(consulta)
+        db.commit()
+        return "El usuario "+nombre+" "+apellido+", se ha registrado correctamente, verifica tu correo "+correo+", "
+    except:
+        return "Error al registrar usuario "+nombre+" "+apellido+", el correo "+correo+" ya se encuentra registrados."
 
 def activarU(codigo):
     db=sqlite3.connect("mensajes.s3db")
@@ -89,3 +81,14 @@ def ActualizarContraseña(passnew,origen):
     print(consulta)
     cursor.execute(consulta)
     db.commit()
+
+
+def ResContrasena (correo):
+    db=sqlite3.connect("mensajes.s3db")
+    db.row_factory=sqlite3.Row
+    cursor=db.cursor()
+    consulta="select *from usuarios where correo='"+correo+"' and estado='1'"
+    cursor.execute(consulta)
+    resultado=cursor.fetchall()
+    return resultado
+    

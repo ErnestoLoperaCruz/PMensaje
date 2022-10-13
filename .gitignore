@@ -1,0 +1,2 @@
+env/ ## se utiliza para ignorar los cambios en la carpeta pycache
+__pycache__/ # se utiliza para ignorar los cambios en la carpeta pycache para que no se carguen al repositorio y no generen ruido 

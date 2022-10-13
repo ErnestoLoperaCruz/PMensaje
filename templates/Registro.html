@@ -1,137 +1,63 @@
 <!doctype html>
-                        <html>
-                            <head>
-                                <meta charset='utf-8'>
-                                <meta name='viewport' content='width=device-width, initial-scale=1'>
-                                <title>Register</title>
-                                <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='/images/logo.ico') }}" />
-                                <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css' rel='stylesheet'>
-                                <link href='#' rel='stylesheet'>
-                                <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-                                <style>
-                              
-                                body{
-
-  background-color: #fff;
-}
-
-.btr{
-
-  border-top-right-radius: 5px !important;
-}
-
-
-.btl{
-
-  border-top-left-radius: 5px !important;
-}
-
-.btn-dark {
-    color: #fff;
-    background-color: #148F95;
-    border-color: #148F95;
-}
-
-
-.btn-dark:hover {
-    color: #fff;
-    background-color: #148F95;
-    border-color: #148F95;
-}
-
-.changecolor {
-  color: #F85E34;
-}
-
-
-.nav-pills{
-
-  display:table !important;
-  width:100%;
-}
-
-.nav-pills .nav-link {
-    border-radius: 0px;
-        border-bottom: 1px solid #F85E34;
-
-}
-
-.nav-item{
-      display: table-cell;
-       background: #F85E34;
-}
-
-
-.form{
-
-  padding: 10px;
-      height: 300px;
-}
-
-.form input{
-
-  margin-bottom: 12px;
-  border-radius: 3px;
-}
-
-
-.form input:focus{
-
-  box-shadow: none;
-  border-color: #148F95;
-}
-
-
-.form button{
-
-  margin-top: 20px;
-}</style>
-  </head>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>Register</title>
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='/images/logo.ico') }}" />
+  <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/style.css') }}">
+  <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+</head>
 <body>
-    <p class="changecolor"><center><img src="{{ url_for('static', filename='/images/Logofull.png') }}" width="300"></center></p>
-    <center><h2>Formulario de registro</h2></center>
-    <div class="d-flex justify-content-center align-items-center mt-5">
-    <div class="contianer alert-success">
-        <form>
-        <table class="table table-striped table-bordered">
-            <tr><td>Tipo de Identificación:</td> <td><select id="slc_Gender" name="slc_Gender" class="form-control" required>
+  <p class="changecolor"><center><img src="{{ url_for('static', filename='/images/Logofull.png') }}" width="250"></center></p>
+  <center style="color: #F85e34"><h2>Formulario de registro</h2></center>
+  <div class="d-flex justify-content-center align-items-center mt-5">
+    <div class="contianer">
+      <form action="RegistrarUsuario" method="POST">
+        <table class="table table-hover">
+          <tr><td><font size ="4", color ="#fff">Tipo de Identificación:</font></td><td><select id="sl_t_doc" name="sl_t_doc" class="form-control" required>
+                <option value="X">Seleccione Tipo de Identificación</option>
                 <option value="CC">Cédula de Ciudadanía</option>
                 <option value="CE">Cédula de Extranjería</option>
                 <option value="PP">Pasaporte</option>
-                <option value="RC">Registro Civil</option>
                 <option value="TI">Tarjeta de Identidad</option>
-            </select></td></tr>
-            <tr><td>Número de Identificación:</td><td><input id="in_ID" name="in_ID" type="number" class="form-control" required></td></tr>
-            <tr><td>Nombre:</td><td><input id="in_Name" name="in_Name" type="text" class="form-control" required></td></tr>
-            <tr><td>Apellido:</td><td><input id="in_Name" name="in_Name" type="text" class="form-control" required></td></tr>
-            <tr><td>Cargo:</td><td><input id="in_User" name="in_User" type="text" class="form-control" required></td></tr>
-            <tr><td>Fecha de Nacimiento:</td> <td><input id="in_ID" name="in_ID" type="date" class="form-control"></td></tr>
-            <tr><td>Género:</td><td><select id="slc_Gender" name="slc_Gender" class="form-control">
+              </select></td></tr>
+            <tr><td><font size ="4", color ="#fff">Número de Identificación:</font></td><td><input id="n_doc" name="n_doc" type="text" class="form-control" required></td></tr>
+            <tr><td><font size ="4", color ="#fff">Nombres:</font></td><td><input id="txtnombregistro" name="txtnombregistro" type="text" class="form-control" required></td></tr>
+            <tr><td><font size ="4", color ="#fff">Apellidos:</font></td><td><input id="txtapellidoregistro" name="txtapellidoregistro" type="text" class="form-control" required></td></tr>
+            <tr><td><font size ="4", color ="#fff">Número de Contacto:</font></td><td><input id="n_tel" name="n_tel" type="text" class="form-control" required></td></tr>
+            <tr><td><font size ="4", color ="#fff">Correo electrónico:</font></td><td><input id="txtemailregistro" name="txtemailregistro" type="email" class="form-control" required></td></tr>
+            <tr><td><font size ="4", color ="#fff">Dirección:</font></td><td><input id="txtdireccionregistro" name="txtdireccionregistro" type="text" class="form-control" required></td></tr>
+            <tr><td><font size ="4", color ="#fff">Cargo:</font></td><td><input id="txtcargoregistro" name="txtcargoregistro" type="text" class="form-control" required></td></tr>
+            <tr><td><font size ="4", color ="#fff">Fecha de Nacimiento:</font></td><td><input id="sl_f_nac" name="sl_f_nac" type="date" class="form-control"></td></tr>
+            <tr><td><font size ="4", color ="#fff">Género:</font><td><select id="sl_genero" name="sl_genero" class="form-control">
                 <option value="X">Seleccione un Género</option>
                 <option value="M">Masculino</option>
                 <option value="F">Femenino</option>
                 <option value="NB">No binario</option>
             </select></td></tr>
-            <tr><td>Número de Contacto:</td> <td><input id="in_ID" name="in_ID" type="number" class="form-control" required></td></tr>
-            <tr><td>Correo electrónico:</td><td><input id="in_Mail" name="in_Mail" type="email" class="form-control" required></td></tr>
-            <tr><td>Crea tu contraseña:</td>
-              <td><input id="in_PSWRD1" name="txtpassregistro" type="password" class="form-control" required></td>
+            <tr><td><font size ="4", color ="#fff">Crea tu contraseña:</font></td>
+              <td><input id="txtpassregistro1" name="txtpassregistro1" type="password" class="form-control" required></td>
+            </tr>
+            <tr><td><font size ="4", color ="#fff">Confirma tu contraseña:</font></td>
+              <td><input id="txtpassregistro2" name="txtpassregistro2" type="password" class="form-control" required></td>
             </tr>
             <tr>
-              <td>Confirma tu contraseña:</td>
-              <td><input id="in_PSWRD2" name="txtpassregistro" type="password" class="form-control" required></td>
+              <td><input id="chk_Terms" class="nav-item text-center" name="chk_Terms" type="checkbox" required><br></td>
+              <td><font size ="4", color ="#fff"<em>Declaro haber leído y aceptar las
+                condiciones generales del programa y
+                la normativa sobre protección de datos</font></em></td>
             </tr>
-            <tr>
-              <td><input id="chk_Terms" class="nav-item text-ceter" name="chk_Terms" type="checkbox"  required><br></td>
-              <td><em>Declaro haber leído y aceptar las
-                  condiciones generales del programa y
-                  la normativa sobre protección de datos</em></td>
-          </tr>
         </table>
-    <center><button type="submit" class="btn btn-dark">Enviar registro</button></center>
     </div>
-    </div>
-    </form>
-
+  </div>
+  <p class="warnings" id="warnings"></p>
+  <center><button type="submit" class="btn btn-dark" data-toggle="button">Enviar registro</button></center>
+  </form>
+  <script src="{{url_for('static', filename='JS/formValidation.js')}}"> </script> <!importa el script de javascript con
+  la cual se valida la contraseña ->
+  <br>
 </body>
+
 </html>
